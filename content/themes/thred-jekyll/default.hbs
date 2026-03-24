@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" data-theme="system">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" rel="stylesheet" />
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+    <div class="site-wrapper">
+        <header class="site-header">
+            <div class="container header-inner" style="justify-content: flex-start;">
+                <div class="header-right" style="width: 100%; justify-content: space-between;">
+                    <nav class="site-nav">
+                        {{navigation}}
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const nav = document.querySelector('.site-nav > ul');
+                                if (nav) {
+                                    const items = Array.from(nav.querySelectorAll('li'));
+                                    // 3번째 아이템까지만 노출, 나머지 드롭다운
+                                    // 단, 전체 메뉴가 4개 이상일 때만 동작
+                                    if (items.length > 3) {
+                                        const visibleItems = items.slice(0, 3);
+                                        const hiddenItems = items.slice(3);
+                                        
+                                        // 기존 items 제거
+                                        nav.innerHTML = '';
+                                        
+                                        // 1~3번째 아이템 추가
+                                        visibleItems.forEach(item => nav.appendChild(item));
+                                        
+                                        // 드롭다운 버튼(···) 및 리스트 생성
+                                        const moreLi = document.createElement('li');
+                                        moreLi.className = 'nav-more has-dropdown';
+                                        
+                                        const moreBtn = document.createElement('a');
+                                        moreBtn.href = "#";
+                                        moreBtn.className = "nav-dropdown-toggle";
+                                        moreBtn.textContent = "···";
+                                        moreBtn.onclick = (e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            document.querySelector('.nav-dropdown').classList.toggle('show');
+                                        };
+                                        
+                                        const dropUl = document.createElement('ul');
+                                        dropUl.className = 'nav-dropdown';
+                                        hiddenItems.forEach(item => dropUl.appendChild(item));
+                                        
+                                        moreLi.appendChild(moreBtn);
+                                        moreLi.appendChild(dropUl);
+                                        nav.appendChild(moreLi);
+                                        
+                                        // 바깥 클릭 시 드롭다운 닫기
+                                        document.addEventListener('click', () => {
+                                            const drop = document.querySelector('.nav-dropdown');
+                                            if (drop && drop.classList.contains('show')) {
+                                                drop.classList.remove('show');
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        </script>
+                    </nav>
+                    <div class="social-links">
+                        <!-- GitHub 아이콘 -->
+                        <a href="https://github.com/brido4125" target="_blank" rel="noopener" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <!-- LinkedIn 아이콘 -->
+                        <a href="https://www.linkedin.com/in/%EC%B0%BD%EC%84%AD-%ED%99%8D-297b62259/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <!-- 이메일 아이콘 -->
+                        <a href="mailto:hcs4125@gmail.com" aria-label="Email">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <div class="container">
+                {{{body}}}
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a></p>
+                <div class="gh-powered">Powered by Ghost x Thred-Jekyll</div>
+            </div>
+        </footer>
+    </div>
+    {{ghost_foot}}
+    
+    <!-- Highlight.js Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+          if (!block.className.includes('language-') && block.parentElement.className.includes('language-')) {
+            block.className = block.parentElement.className;
+          }
+        });
+        hljs.highlightAll();
+      });
+    </script>
+</body>
+</html>

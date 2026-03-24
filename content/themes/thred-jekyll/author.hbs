@@ -1,0 +1,45 @@
+{{!< default}}
+
+{{#author}}
+<header class="author-header" style="text-align: center; margin-bottom: 40px; padding: 40px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px;">
+    {{#if profile_image}}
+        <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 16px;" />
+    {{/if}}
+    <h1 class="author-title" style="font-size: 2rem; margin: 0 0 8px 0;">{{name}}</h1>
+    
+    {{#if bio}}
+        <p class="author-bio" style="color: var(--text-muted); font-size: 1.05rem; max-width: 500px; margin: 0 auto 16px auto;">{{bio}}</p>
+    {{/if}}
+    
+    <div class="author-meta" style="display: flex; justify-content: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted);">
+        {{#if location}}
+            <span class="author-location">📍 {{location}}</span>
+        {{/if}}
+        {{#if website}}
+            <span class="author-link">🔗 <a href="{{website}}" target="_blank" rel="noopener" style="color: var(--link-color);">{{website}}</a></span>
+        {{/if}}
+        <span class="author-stats">📝 {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}</span>
+    </div>
+</header>
+{{/author}}
+
+<div class="feed-container">
+    {{#foreach posts}}
+    <article class="feed-post {{post_class}}">
+        <header class="feed-header">
+            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+            <h2 class="feed-title"><a href="{{url}}">{{title}}</a></h2>
+        </header>
+
+        <section class="feed-excerpt">
+            <p>{{excerpt words="33"}}</p>
+        </section>
+
+        <footer class="feed-footer">
+            <a class="read-more" href="{{url}}">Read post →</a>
+        </footer>
+    </article>
+    {{/foreach}}
+</div>
+
+{{pagination}}

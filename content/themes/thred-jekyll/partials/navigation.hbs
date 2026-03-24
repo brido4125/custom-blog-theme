@@ -1,0 +1,20 @@
+<ul class="nav">
+    {{#foreach navigation to="3"}}
+        <li class="{{link_class for=(url) class=(concat "nav-" slug)}}">
+            <a href="{{url absolute="true"}}">{{label}}</a>
+        </li>
+    {{/foreach}}
+    
+    {{#if navigation.[3]}}
+        <li class="nav-more has-dropdown">
+            <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault(); this.nextElementSibling.classList.toggle('show');">...</a>
+            <ul class="nav-dropdown">
+                {{#foreach navigation from="4"}}
+                    <li class="{{link_class for=(url) class=(concat "nav-" slug)}}">
+                        <a href="{{url absolute="true"}}">{{label}}</a>
+                    </li>
+                {{/foreach}}
+            </ul>
+        </li>
+    {{/if}}
+</ul>

@@ -1,0 +1,351 @@
+/* Custom properties for Thred x GitHub/Jekyll aesthetic */
+:root {
+  /* Github light theme colors */
+  --bg-color: #ffffff;
+  --text-color: #24292e;
+  --text-muted: #586069;
+  --link-color: #0366d6;
+  --border-color: #e1e4e8;
+  --card-bg: #ffffff;
+  --card-hover: #fcfcfc;
+  --bg-tertiary: #f6f8fa;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --text-muted: #8b949e;
+    --link-color: #58a6ff;
+    --border-color: #30363d;
+    --card-bg: #161b22;
+    --card-hover: #1c2128;
+    --bg-tertiary: #010409;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+  background-color: var(--card-bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background-color: color-mix(in srgb, var(--card-bg) 80%, transparent);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.site-title:hover {
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav li {
+  margin: 0;
+}
+.site-nav a {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.site-nav a:hover,
+.site-nav .nav-current a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* Dropdown Navigation */
+.nav-more {
+  position: relative;
+}
+.nav-dropdown-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+.nav-dropdown {
+  display: none !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 0 !important;
+  margin-top: 12px !important;
+  min-width: 150px;
+  flex-direction: column !important;
+  gap: 0 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+.nav-dropdown.show,
+.nav-more:hover .nav-dropdown {
+  display: flex !important;
+}
+.nav-dropdown li {
+  width: 100%;
+}
+.nav-dropdown a {
+  display: block;
+  padding: 8px 16px;
+  text-transform: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.nav-dropdown a:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding-left: 20px;
+  border-left: 1px solid var(--border-color);
+}
+
+.social-links a {
+  color: var(--text-muted);
+  display: flex;
+  transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--text-color);
+  transform: translateY(-2px);
+}
+
+/* Feed Wrapper */
+.site-main {
+  padding: 40px 0;
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Post Cards (Thred-style) */
+.feed-post {
+  padding: 24px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.feed-post:hover {
+  border-color: var(--text-muted);
+}
+
+.feed-header time {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.feed-title {
+  margin: 8px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.feed-title a {
+  color: var(--text-color);
+}
+.feed-title a:hover {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.feed-excerpt {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.feed-image img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.feed-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+}
+
+.read-more {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.feed-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.8rem;
+  background: var(--bg-tertiary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* Single Post (Jekyll-style) */
+.single-post {
+  padding: 24px 0;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.post-feature-image img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+/* Markdown Post Content formatting (gh-content) */
+.gh-content h1, .gh-content h2, .gh-content h3 {
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+.gh-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.gh-content a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.gh-content pre {
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+}
+.gh-content :not(pre) > code {
+  background-color: var(--bg-tertiary);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+/* Force Highlight.js to use our chosen monospace font */
+.hljs, pre[class*="language-"], code[class*="language-"] {
+  font-family: var(--font-mono) !important;
+}
+
+.gh-content blockquote {
+  border-left: 4px solid var(--border-color);
+  padding-left: 16px;
+  color: var(--text-muted);
+  margin-left: 0;
+}
+
+.gh-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.gh-powered {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
