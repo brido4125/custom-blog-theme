@@ -1128,3 +1128,6 @@
 {"name":"Log","hostname":"brido","pid":5694,"level":30,"version":"6.22.1","worker":{"resourceLimits":{"maxYoungGenerationSizeMb":48,"maxOldGenerationSizeMb":2048,"codeRangeSizeMb":0,"stackSizeMb":4},"threadId":60},"msg":"Worker for job \"process-outbox\" online","time":"2026-03-24T08:37:29.763Z","v":0}
 {"name":"Log","hostname":"brido","pid":5694,"level":30,"version":"6.22.1","msg":"Worker for job process-outbox sent a message: done","time":"2026-03-24T08:37:29.764Z","v":0}
 {"name":"Log","hostname":"brido","pid":5694,"level":30,"version":"6.22.1","msg":"[OUTBOX] No pending outbox entries to process","time":"2026-03-24T08:37:29.775Z","v":0}
+{"name":"Log","hostname":"brido","pid":5694,"level":30,"version":"6.22.1","worker":{"resourceLimits":{"maxYoungGenerationSizeMb":48,"maxOldGenerationSizeMb":2048,"codeRangeSizeMb":0,"stackSizeMb":4},"threadId":61},"msg":"Worker for job \"process-outbox\" online","time":"2026-03-24T08:39:56.138Z","v":0}
+{"name":"Log","hostname":"brido","pid":5694,"level":30,"version":"6.22.1","msg":"Worker for job process-outbox sent a message: done","time":"2026-03-24T08:39:56.139Z","v":0}
+{"name":"Log","hostname":"brido","pid":5694,"level":30,"version":"6.22.1","msg":"[OUTBOX] No pending outbox entries to process","time":"2026-03-24T08:39:56.146Z","v":0}

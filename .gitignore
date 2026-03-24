@@ -1,0 +1,5 @@
+content/logs/*
+versions/*
+.ghostpid
+config.development.json
+node_modules/
