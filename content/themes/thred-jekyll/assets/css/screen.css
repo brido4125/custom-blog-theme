@@ -51,7 +51,7 @@ a:hover {
 }
 
 .container {
-  max-width: 680px;
+  max-width: 800px; /* Widened the container per request */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -281,6 +281,7 @@ a:hover {
 
 .post-feature-image img {
   width: 100%;
+  height: auto;
   border-radius: 12px;
   margin-bottom: 32px;
 }
@@ -329,10 +330,38 @@ a:hover {
   margin-left: 0;
 }
 
+/* IMAGE FIXES: allow full original width in images and remove bounding boxes strictly */
 .gh-content img {
   max-width: 100%;
+  height: auto;
   border-radius: 8px;
   border: 1px solid var(--border-color);
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.gh-content figure.kg-image-card {
+  margin: 2rem 0;
+}
+
+.gh-content .kg-width-wide img,
+.gh-content .kg-width-full img {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* LIST FIXES (1, 2, 3 ordered and unordered fixes) */
+.gh-content ul,
+.gh-content ol {
+  padding-left: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.gh-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
 
 /* Footer */
