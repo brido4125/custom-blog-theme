@@ -467,3 +467,50 @@ a:hover {
   }
 }
 
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0 20px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.pagination-prev,
+.pagination-next {
+  flex: 1;
+}
+
+.pagination-prev {
+  text-align: left;
+}
+
+.pagination-next {
+  text-align: right;
+}
+
+.page-number {
+  flex: 1;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.pagination a {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  border-color: var(--text-muted);
+  background: var(--bg-tertiary);
+}
+

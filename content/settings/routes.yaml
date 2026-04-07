@@ -1,4 +1,7 @@
 routes:
+  /ads.txt/:
+    template: ads
+    content_type: text/plain
 
 collections:
   /:
