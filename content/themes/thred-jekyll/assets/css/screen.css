@@ -303,12 +303,53 @@ a:hover {
 }
 
 .gh-content pre {
-  padding: 16px;
+  position: relative;
+  padding: 3rem 1rem 1rem 1rem;
   border-radius: 8px;
   overflow-x: auto;
   font-family: var(--font-mono);
   font-size: 0.9rem;
   border: 1px solid var(--border-color);
+}
+
+/* Mac OS Code Block Controls */
+.gh-content pre::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+  z-index: 10;
+}
+
+/* Copy Code Button */
+.copy-code-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  z-index: 10;
+}
+
+.gh-content pre:hover .copy-code-btn {
+  opacity: 1;
+}
+
+.copy-code-btn:hover {
+  background: var(--card-bg);
 }
 .gh-content :not(pre) > code {
   background-color: var(--bg-tertiary);
@@ -512,5 +553,68 @@ a:hover {
 .pagination a:hover {
   border-color: var(--text-muted);
   background: var(--bg-tertiary);
+}
+
+/* Table of Contents Wrapper */
+.toc-wrapper {
+  position: fixed;
+  top: 120px;
+  left: calc(50% + 420px); /* 800px / 2 + 20px */
+  width: 260px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  display: none; /* Hidden by default on smaller screens */
+  padding-left: 20px;
+  border-left: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+@media (min-width: 1400px) {
+  .toc-wrapper {
+    display: block;
+  }
+}
+
+.toc-header {
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.toc {
+  font-size: 0.9rem;
+}
+
+.toc-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc-list .toc-list {
+  padding-left: 16px;
+  margin-top: 4px;
+}
+
+.toc-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: block;
+  padding: 4px 0;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.toc-link:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.toc-link.is-active-link {
+  color: var(--link-color);
+  font-weight: 600;
 }
 

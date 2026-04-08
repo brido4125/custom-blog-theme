@@ -18,6 +18,12 @@
         {{content}}
     </div>
 
+    <!-- Table of Contents (Side Floating) -->
+    <aside class="toc-wrapper">
+        <div class="toc-header">목 차</div>
+        <div class="toc"></div>
+    </aside>
+
     <!-- Giscus 댓글 (좋아요 포함) 영역 -->
     <section class="post-comments" style="margin-top: 60px; border-top: 1px solid var(--border-color); padding-top: 40px;">
         <script src="https://giscus.app/client.js"
@@ -37,4 +43,19 @@
         </script>
     </section>
 </article>
+
+<!-- Tocbot JS for Table of Contents -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.21.2/tocbot.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        tocbot.init({
+            tocSelector: '.toc',
+            contentSelector: '.gh-content',
+            headingSelector: 'h1, h2, h3',
+            hasInnerContainers: true,
+            scrollSmoothOffset: -80,
+            headingsOffset: 80
+        });
+    });
+</script>
 {{/post}}
